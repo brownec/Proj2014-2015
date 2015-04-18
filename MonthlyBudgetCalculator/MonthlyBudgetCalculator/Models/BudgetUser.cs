@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace BudgetCalculator.Models
+namespace MonthlyBudgetCalculator.Models
 {
     public class BudgetUser
     {

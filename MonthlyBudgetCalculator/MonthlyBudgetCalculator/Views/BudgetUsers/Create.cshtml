@@ -1,18 +1,22 @@
-﻿@model BudgetCalculator.Models.BudgetUser
+﻿@model MonthlyBudgetCalculator.Models.BudgetUser
 
 @{
     ViewBag.Title = "Create";
 }
+<div>
+    <br />
+    <a class="btn btn-primary btn-xs" @Html.ActionLink("Users", "Index")</a>
+</div>
 
-<h2>Create</h2>
-
+<h4>Add New User</h4>
+<h5>Enter in User Details and click Add User button when done.</h5>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>BudgetUser</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -97,16 +101,11 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Add User" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

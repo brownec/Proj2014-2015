@@ -166,6 +166,27 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504172310315_InitialCreate.cs" />
+    <Compile Include="Migrations\201504172310315_InitialCreate.Designer.cs">
+      <DependentUpon>201504172310315_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504181038260_InitialCreate1.cs" />
+    <Compile Include="Migrations\201504181038260_InitialCreate1.Designer.cs">
+      <DependentUpon>201504181038260_InitialCreate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504181129497_18April2015a.cs" />
+    <Compile Include="Migrations\201504181129497_18April2015a.Designer.cs">
+      <DependentUpon>201504181129497_18April2015a.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504181135347_18April2015b.cs" />
+    <Compile Include="Migrations\201504181135347_18April2015b.Designer.cs">
+      <DependentUpon>201504181135347_18April2015b.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504181812370_18April2015c.cs" />
+    <Compile Include="Migrations\201504181812370_18April2015c.Designer.cs">
+      <DependentUpon>201504181812370_18April2015c.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Budget.cs" />
     <Compile Include="Models\BudgetUser.cs" />
@@ -231,16 +252,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\BudgetUsers\Create.cshtml" />
-    <Content Include="Views\BudgetUsers\Delete.cshtml" />
-    <Content Include="Views\BudgetUsers\Details.cshtml" />
-    <Content Include="Views\BudgetUsers\Edit.cshtml" />
-    <Content Include="Views\BudgetUsers\Index.cshtml" />
     <Content Include="Views\Budgets\Create.cshtml" />
     <Content Include="Views\Budgets\Delete.cshtml" />
     <Content Include="Views\Budgets\Details.cshtml" />
     <Content Include="Views\Budgets\Edit.cshtml" />
     <Content Include="Views\Budgets\Index.cshtml" />
+    <Content Include="Views\BudgetUsers\Create.cshtml" />
+    <Content Include="Views\BudgetUsers\Delete.cshtml" />
+    <Content Include="Views\BudgetUsers\Details.cshtml" />
+    <Content Include="Views\BudgetUsers\Edit.cshtml" />
+    <Content Include="Views\BudgetUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -251,6 +272,23 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201504172310315_InitialCreate.resx">
+      <DependentUpon>201504172310315_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504181038260_InitialCreate1.resx">
+      <DependentUpon>201504181038260_InitialCreate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504181129497_18April2015a.resx">
+      <DependentUpon>201504181129497_18April2015a.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504181135347_18April2015b.resx">
+      <DependentUpon>201504181135347_18April2015b.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504181812370_18April2015c.resx">
+      <DependentUpon>201504181812370_18April2015c.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

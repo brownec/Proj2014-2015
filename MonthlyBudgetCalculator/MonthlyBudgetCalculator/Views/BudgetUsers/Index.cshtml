@@ -1,14 +1,14 @@
-﻿@model IEnumerable<BudgetCalculator.Models.BudgetUser>
+﻿@model IEnumerable<MonthlyBudgetCalculator.Models.BudgetUser>
 
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <br />
+    <a class="btn btn-primary btn-xs" @Html.ActionLink("Home", "Index", "Home")</a>
 </p>
+<h4>Users</h4>
+
 <table class="table">
     <tr>
         <th>
@@ -76,12 +76,20 @@
         <td>
             @Html.DisplayFor(modelItem => item.ContactNo)
         </td>
+
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BudgetUserId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BudgetUserId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BudgetUserId })
+            <div class="btn-group btn-sm">
+                <a class="btn btn-info" href="#">Select</a>
+                <a class="btn btn-info dropdown-toggle" aria-expanded="false" href="#" data-toggle="dropdown"><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Add New Budget", "Create", "Budgets", new { id = item.BudgetUserId }, null)</li>
+                    <li>@Html.ActionLink("My Budgets", "Index", "Budgets", new { id = item.BudgetUserId }, null)</li>
+                    <li>@Html.ActionLink("Edit User", "Edit", new { id = item.BudgetUserId })</li>
+                    <li>@Html.ActionLink("User Details", "Details", new { id = item.BudgetUserId })</li>
+                    <li>@Html.ActionLink("Delete User", "Delete", new { id = item.BudgetUserId })</li>
+                </ul>
+            </div>
         </td>
     </tr>
 }
-
 </table>

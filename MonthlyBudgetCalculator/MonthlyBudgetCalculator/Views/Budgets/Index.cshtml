@@ -3,12 +3,13 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <br />
+    <a class="btn btn-primary btn-xs" @Html.ActionLink("Home", "Index", "Home")</a>
+    <a class="btn btn-primary btn-xs" @Html.ActionLink("Users", "Index", "BudgetUsers")</a>
 </p>
+<h3>My Budgets</h3>
+
 <table class="table">
     <tr>
         <th>
@@ -316,12 +317,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.TotalUtilityBillExpenses)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BudgetId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BudgetId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BudgetId })
-        </td>
-    </tr>
+  </tr>
 }
-
 </table>

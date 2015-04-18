@@ -7,15 +7,15 @@
     <br />
     <a class="btn btn-primary btn-xs" @Html.ActionLink("Home", "Index", "Home")</a>
 </p>
-<h4>Users</h4>
+<h4>Application Users</h4>
 
 <table class="table" style="text-align:left">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.FirstName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DateOfBirth)
@@ -48,10 +48,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.LastName)
+                @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
+                @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateOfBirth)
@@ -85,8 +85,8 @@
                     <ul class="dropdown-menu">
                         <li>@Html.ActionLink("Add New Budget", "Create", "Budgets", new { id = item.BudgetUserId }, null)</li>
                         <li>@Html.ActionLink("My Budgets", "Index", "Budgets", new { id = item.BudgetUserId }, null)</li>
-                        <li>@Html.ActionLink("Edit User", "Edit", new { id = item.BudgetUserId })</li>
-                        <li>@Html.ActionLink("User Details", "Details", new { id = item.BudgetUserId })</li>
+                        <li>@Html.ActionLink("Edit User Profile", "Edit", new { id = item.BudgetUserId })</li>
+                        <li>@Html.ActionLink("User Profile", "Details", new { id = item.BudgetUserId })</li>
                         <li>@Html.ActionLink("Delete User", "Delete", new { id = item.BudgetUserId })</li>
                     </ul>
                 </div>

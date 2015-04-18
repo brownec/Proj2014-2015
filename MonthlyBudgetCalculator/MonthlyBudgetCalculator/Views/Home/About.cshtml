@@ -15,19 +15,17 @@
 
             <!-- TABS NAVIGATION -->
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#income" data-toggle="tab">Income</a></li>
-                <li><a href="#carExpenses" data-toggle="tab">Car Expenses</a></li>
-                <li><a href="#householdExpenses" data-toggle="tab">Household Expenses</a></li>
-                <li><a href="#personalExpenses" data-toggle="tab">Personal Expenses</a></li>
-                <li><a href="#travelExpenses" data-toggle="tab">Travel Expenses</a></li>
-                <li><a href="#utilityBillExpenses" data-toggle="tab">Utility Bill Expenses</a></li>
+                <li class="active"><a aria-expanded="true" href="#income" data-toggle="tab">Income</a></li>
+                <li class=""><a aria-expanded="true" href="#carExpenses" data-toggle="tab">Car Expenses</a></li>
+                <li class=""><a aria-expanded="true" href="#householdExpenses" data-toggle="tab">Household Expenses</a></li>
+                <li class=""><a aria-expanded="true" href="#personalExpenses" data-toggle="tab">Personal Expenses</a></li>
+                <li class=""><a aria-expanded="true" href="#travelExpenses" data-toggle="tab">Travel Expenses</a></li>
+                <li class=""><a aria-expanded="true" href="#utilityBillExpenses" data-toggle="tab">Utility Bill Expenses</a></li>
             </ul>
 
             <!-- TAB SECTION -->
             <div id="myTabContent class=" tab-content">
-                <!--
-                    --------------------------INCOME------------------------------------
-                -->
+                
                 <div class="tab-pane fade active in" id="income">
                     <div class="form-group">
                         @Html.LabelFor(model => model.IncomePrimaryAmount, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -45,9 +43,13 @@
                         </div>
                     </div>
                 </div>
-
-               
-                <div class="tab-pane fade" id="carExpenses">
+                <!--
+                    -----------------------------END OF INCOME------------------------------
+                -->
+                <!--
+                    --------------------------CAR EXPENDITURE------------------------------------
+                -->
+                <div class="tab-pane fade affix" id="carExpenses">
                     <div class="form-group">
                         @Html.LabelFor(model => model.CarTaxAmount, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
@@ -108,9 +110,9 @@
                     -----------------------------END OF CAR EXPENDITURE------------------------------
                 -->
                 <!--
-                --------------------------HOUSEHOLD EXPENDITURE------------------------------------
+                    --------------------------HOUSEHOLD EXPENDITURE------------------------------------
                  -->
-                <div class="tab-pane fade" id="householdExpenses">
+                <div class="tab-pane fade affix" id="householdExpenses">
                     <div class="form-group">
                         @Html.LabelFor(model => model.HouseholdRentMortgageAmount, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
@@ -184,12 +186,12 @@
                     </div>
                 </div>
                 <!--
-                -----------------------------END OF HOUSEHOLD EXPENDITURE------------------------------
+                    -----------------------------END OF HOUSEHOLD EXPENDITURE------------------------------
                 -->
                 <!--
-                --------------------------PERSONAL EXPENDITURE------------------------------------
+                    --------------------------PERSONAL EXPENDITURE------------------------------------
                 -->
-                <div class="tab-pane fade" id="personalExpenses">
+                <div class="tab-pane fade affix" id="personalExpenses">
                     <div class="form-group">
                         @Html.LabelFor(model => model.PersonalSocialAmount, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
@@ -255,12 +257,12 @@
                     </div>
                 </div>
                 <!--
-                -----------------------------END OF PERSONAL EXPENDITURE------------------------------
+                    -----------------------------END OF PERSONAL EXPENDITURE------------------------------
                 -->
                 <!--
-                --------------------------TRAVEL EXPENDITURE------------------------------------
+                    --------------------------TRAVEL EXPENDITURE------------------------------------
                 -->
-                <div class="tab-pane fade" id="travelExpenses">
+                <div class="tab-pane fade affix" id="travelExpenses">
                     <div class="form-group">
                         @Html.LabelFor(model => model.TravelBusAmount, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
@@ -310,12 +312,12 @@
                     </div>
                 </div>
                 <!--
-                -----------------------------END OF TRAVEL EXPENDITURE------------------------------
+                    -----------------------------END OF TRAVEL EXPENDITURE------------------------------
                 -->
                 <!--
-                --------------------------UTILITY BILL EXPENDITURE------------------------------------
+                    --------------------------UTILITY BILL EXPENDITURE------------------------------------
                 -->
-                <div class="tab-pane fade" id="utilityBillExpenses">
+                <div class="tab-pane fade affix" id="utilityBillExpenses">
                     <div class="form-group">
                         @Html.LabelFor(model => model.UtilityBillElectricityAmount, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
@@ -381,7 +383,7 @@
                     </div>
                 </div>
                 <!--
-                -----------------------------END OF UTILITY BILL EXPENDITURE------------------------------
+                    -----------------------------END OF UTILITY BILL EXPENDITURE------------------------------
                 -->
             </div>
         </div>

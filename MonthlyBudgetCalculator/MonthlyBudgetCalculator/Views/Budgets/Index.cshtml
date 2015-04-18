@@ -30,9 +30,9 @@
         <th>
             @Html.DisplayNameFor(model => model.IncomeAdditionalAmount)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TotalIncome)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.CarTaxAmount)
         </th>
@@ -54,9 +54,9 @@
         <th>
             @Html.DisplayNameFor(model => model.CarExpenseOtherAmount)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TotalCarExpenses)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.HouseholdRentMortgageAmount)
         </th>
@@ -84,9 +84,9 @@
         <th>
             @Html.DisplayNameFor(model => model.HouseholdExpenseOtherAmount)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TotalHouseholdExpenses)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.PersonalSocialAmount)
         </th>
@@ -111,9 +111,9 @@
         <th>
             @Html.DisplayNameFor(model => model.PersonalExpenseOtherAmount)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TotalPersonalExpenses)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.TravelBusAmount)
         </th>
@@ -132,9 +132,9 @@
         <th>
             @Html.DisplayNameFor(model => model.TravelExpenseOtherAmount)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TotalTravelExpenses)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.UtilityBillElectricityAmount)
         </th>
@@ -159,11 +159,10 @@
         <th>
             @Html.DisplayNameFor(model => model.UtilityBillOtherExpenseAmount)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TotalUtilityBillExpenses)
-        </th>
-        <th></th>
-    </tr>
+        </th>*@
+     </tr>
 
 @foreach (var item in Model) {
     <tr>
@@ -185,9 +184,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.IncomeAdditionalAmount)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.TotalIncome)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.CarTaxAmount)
         </td>
@@ -209,9 +208,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.CarExpenseOtherAmount)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.TotalCarExpenses)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.HouseholdRentMortgageAmount)
         </td>
@@ -239,9 +238,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.HouseholdExpenseOtherAmount)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.TotalHouseholdExpenses)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.PersonalSocialAmount)
         </td>
@@ -266,9 +265,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.PersonalExpenseOtherAmount)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.TotalPersonalExpenses)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.TravelBusAmount)
         </td>
@@ -287,9 +286,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.TravelExpenseOtherAmount)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.TotalTravelExpenses)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.UtilityBillElectricityAmount)
         </td>
@@ -314,9 +313,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.UtilityBillOtherExpenseAmount)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.TotalUtilityBillExpenses)
-        </td>
+        </td>*@
   </tr>
 }
 </table>

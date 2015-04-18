@@ -9,7 +9,7 @@
 </p>
 <h4>Users</h4>
 
-<table class="table">
+<table class="table" style="text-align:left">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.LastName)
@@ -30,7 +30,7 @@
             @Html.DisplayNameFor(model => model.Town)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.County)
+            @Html.DisplayNameFor(model => model.Counties)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Country)
@@ -44,52 +44,53 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfBirth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AddressLine1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AddressLine2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Town)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.County)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactNo)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressLine1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressLine2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Town)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Counties)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactNo)
+            </td>
 
-        <td>
-            <div class="btn-group btn-sm">
-                <a class="btn btn-info" href="#">Select</a>
-                <a class="btn btn-info dropdown-toggle" aria-expanded="false" href="#" data-toggle="dropdown"><span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li>@Html.ActionLink("Add New Budget", "Create", "Budgets", new { id = item.BudgetUserId }, null)</li>
-                    <li>@Html.ActionLink("My Budgets", "Index", "Budgets", new { id = item.BudgetUserId }, null)</li>
-                    <li>@Html.ActionLink("Edit User", "Edit", new { id = item.BudgetUserId })</li>
-                    <li>@Html.ActionLink("User Details", "Details", new { id = item.BudgetUserId })</li>
-                    <li>@Html.ActionLink("Delete User", "Delete", new { id = item.BudgetUserId })</li>
-                </ul>
-            </div>
-        </td>
-    </tr>
-}
+            <td>
+                <div class="btn-group btn-sm">
+                    <a class="btn btn-info" href="#">Select</a>
+                    <a class="btn btn-info dropdown-toggle" aria-expanded="false" href="#" data-toggle="dropdown"><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Add New Budget", "Create", "Budgets", new { id = item.BudgetUserId }, null)</li>
+                        <li>@Html.ActionLink("My Budgets", "Index", "Budgets", new { id = item.BudgetUserId }, null)</li>
+                        <li>@Html.ActionLink("Edit User", "Edit", new { id = item.BudgetUserId })</li>
+                        <li>@Html.ActionLink("User Details", "Details", new { id = item.BudgetUserId })</li>
+                        <li>@Html.ActionLink("Delete User", "Delete", new { id = item.BudgetUserId })</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    }
 </table>

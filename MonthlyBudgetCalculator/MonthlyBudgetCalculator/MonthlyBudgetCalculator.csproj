@@ -186,6 +186,18 @@
     <Compile Include="Migrations\201504181812370_18April2015c.Designer.cs">
       <DependentUpon>201504181812370_18April2015c.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504181912495_18April2015d.cs" />
+    <Compile Include="Migrations\201504181912495_18April2015d.Designer.cs">
+      <DependentUpon>201504181912495_18April2015d.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504181944129_18April2015e.cs" />
+    <Compile Include="Migrations\201504181944129_18April2015e.Designer.cs">
+      <DependentUpon>201504181944129_18April2015e.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504182018494_18April2015f.cs" />
+    <Compile Include="Migrations\201504182018494_18April2015f.Designer.cs">
+      <DependentUpon>201504182018494_18April2015f.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Budget.cs" />
@@ -199,6 +211,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapPaper.css" />
+    <Content Include="Content\bootstrapSimplex.css" />
+    <Content Include="Content\bootstrapSimplex.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -288,6 +303,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504181812370_18April2015c.resx">
       <DependentUpon>201504181812370_18April2015c.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504181912495_18April2015d.resx">
+      <DependentUpon>201504181912495_18April2015d.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504181944129_18April2015e.resx">
+      <DependentUpon>201504181944129_18April2015e.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504182018494_18April2015f.resx">
+      <DependentUpon>201504182018494_18April2015f.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

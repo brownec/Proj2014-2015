@@ -9,8 +9,19 @@ using System.Web;
 
 namespace MonthlyBudgetCalculator.Models
 {
+    public enum Counties
+    {
+        Antrim, Armagh, Carlow, Cavan, Clare, Cork, Derry, Donegal, Down, Dublin,
+        Dublin1, Dublin2, Dublin3, Dublin4, Dublin5, Dublin6,
+        Dublin6W, Dublin7, Dublin8, Dublin9, Dublin10, Dublin11,
+        Dublin12, Dublin13, Dublin14, Dublin15, Dublin16, Dublin17,
+        Dublin18, Dublin20, Dublin22, Dublin24, Fermanagh, Galway,
+        Kerry, Kildare, Kilkenny, Laois, Leitrim, Limerick, Longford, Louth, Mayo, Meath, Monaghan,
+        Offaly, Roscommon, Sligo, Tipperary, Tyrone, Waterford, Westmeath, Wexford, Wicklow, Other
+    };
     public class BudgetUser
     {
+       
         public int BudgetUserId { get; set; }
 
         [Required]
@@ -53,9 +64,9 @@ namespace MonthlyBudgetCalculator.Models
         [Display(Name = "Town")]
         public String Town { get; set; }
 
-        [StringLength(50, ErrorMessage = "County cannot be more than 50 characters.")]
+        // [StringLength(50, ErrorMessage = "County cannot be more than 50 characters.")]
         [Display(Name = "County")]
-        public String County { get; set; }
+        public Counties Counties { get; set; }
 
         [StringLength(50, ErrorMessage = "Country cannot be more than 50 characters.")]
         [Display(Name = "Country")]

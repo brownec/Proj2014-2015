@@ -3,13 +3,14 @@
 @{
     ViewBag.Title = "Edit";
 }
-<p>
+<div>
     <br />
     <a class="btn btn-primary btn-xs" @Html.ActionLink("Home", "Index", "Home")</a>
     <a class="btn btn-primary btn-xs" @Html.ActionLink("Users", "Index", "BudgetUsers")</a>
-</p>
+</div>
+
 <h4>Edit User</h4>
-<h5>Edit User details and click Save Changes button when done.</h5>
+<h6>*Edit User details and click Save Changes button when done.</h6>
 
 @using (Html.BeginForm())
 {

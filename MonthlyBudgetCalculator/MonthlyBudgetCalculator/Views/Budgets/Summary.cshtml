@@ -1,0 +1,303 @@
+﻿@model MonthlyBudgetCalculator.Models.Budget
+@{
+    ViewBag.Title = "Summary";
+}
+<p>
+    <br />
+    <a class="btn btn-primary btn-xs" @Html.ActionLink("Home", "Index", "Home")</a>
+    <a class="btn btn-primary btn-xs" @Html.ActionLink("My Budgets", "Index", "Budgets")</a>
+</p>
+<h3>Budget Summary Table</h3>
+<h6>* Click (+) for breakdown of Income and Expenditure</h6>
+
+<table class="table table-responsive table-hover">
+    <thead>
+        <tr class="info">
+            <th>Details</th>
+            <th>Debit</th>
+            <th>Credit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- INCOME -->
+        <tr class="clickable" data-toggle="collapse" id="income" data-target=".income">
+            <td><i class="glyphicon glyphicon-plus"> Income</i></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="collapse income">
+            <td>Primary Income</td>
+            <td>@ViewBag.IncomePrimaryAmount</td>
+            <td>0.00</td>
+        </tr>
+        <tr class="collapse income">
+            <td>Additional Income</td>
+            <td>@ViewBag.IncomeAdditionalAmount</td>
+            <td>0.00</td>
+        </tr>
+        <tr class="warning">
+            <th>Income Total</th>
+            <th>@ViewBag.TotalIncome</th>
+            <th>0.00</th>
+        </tr>
+
+        <!-- CAR EXPENDITURE -->
+        <tr class="clickable" data-toggle="collapse" id="carExpenses" data-target=".carExpenses">
+            <td><i class="glyphicon glyphicon-plus"> Car Expenditure</i></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="collapse carExpenses">
+            <td>Car Tax</td>
+            <td>0.00</td>
+            <td>@ViewBag.CarTaxAmount</td>
+        </tr>
+        <tr class="collapse carExpenses">
+            <td>Car Insurance</td>
+            <td>0.00</td>
+            <td>@ViewBag.CarInsuranceAmount</td>
+        </tr>
+        <tr class="collapse carExpenses">
+            <td>Car Maintenance</td>
+            <td>0.00</td>
+            <td>@ViewBag.CarMaintenanceAmount</td>
+        </tr>
+        <tr class="collapse carExpenses">
+            <td>Fuel</td>
+            <td>0.00</td>
+            <td>@ViewBag.CarFuelAmount</td>
+        </tr>
+        <tr class="collapse carExpenses">
+            <td>NCT</td>
+            <td>0.00</td>
+            <td>@ViewBag.CarNctAmount</td>
+        </tr>
+        <tr class="collapse carExpenses">
+            <td>Toll Charges</td>
+            <td>0.00</td>
+            <td>@ViewBag.CarTollChargesAmount</td>
+        </tr>
+        <tr class="collapse carExpenses">
+            <td>Other</td>
+            <td>0.00</td>
+            <td>@ViewBag.CarExpenseOtherAmount</td>
+        </tr>
+        <tr class="warning">
+            <th>Car Expenditure Total</th>
+            <th>0.00</th>
+            <th>@ViewBag.TotalCarExpenses</th>
+        </tr>
+
+        <!-- HOUSEHOLD EXPENDITURE -->
+        <tr class="clickable" data-toggle="collapse" id="householdExpenses" data-target=".householdExpenses">
+            <td><i class="glyphicon glyphicon-plus"> Household Expenditure</i></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="collapse householdExpenses">
+            <td>Rent/Mortgage</td>
+            <td>0.00</td>
+            <td>@ViewBag.HouseholdRentMortgageAmount</td>
+        </tr>
+        <tr class="collapse householdExpenses">
+            <td>Groceries/Dining Out</td>
+            <td>0.00</td>
+            <td>@ViewBag.HouseholdGroceryAmount</td>
+        </tr>
+        <tr class="collapse householdExpenses">
+            <td>Clothing</td>
+            <td>0.00</td>
+            <td>@ViewBag.HouseholdClothingAmount</td>
+        </tr>
+        <tr class="collapse householdExpenses">
+            <td>Education Fees</td>
+            <td>0.00</td>
+            <td>@ViewBag.HouseholdEducationFeesAmount</td>
+        </tr>
+        <tr class="collapse householdExpenses">
+            <td>School Supplies</td>
+            <td>0.00</td>
+            <td>@ViewBag.HouseholdSchoolSuppliesAmount</td>
+        </tr>
+        <tr class="collapse householdExpenses">
+            <td>Medical Bills</td>
+            <td>0.00</td>
+            <td>@ViewBag.HouseholdMedicalExpensesAmount</td>
+        </tr>
+        <tr class="collapse householdExpenses">
+            <td>Household Insurance</td>
+            <td>0.00</td>
+            <td>@ViewBag.HouseholdInsuranceAmount</td>
+        </tr>
+        <tr class="collapse householdExpenses">
+            <td>Household Maintenance</td>
+            <td>0.00</td>
+            <td>@ViewBag.HouseholdMaintenanceAmount</td>
+        </tr>
+        <tr class="collapse householdExpenses">
+            <td>Other</td>
+            <td>0.00</td>
+            <td>@ViewBag.HouseholdExpenseOtherAmount</td>
+        </tr>
+        <tr class="warning">
+            <th>Household Expenditure Total</th>
+            <th>0.00</th>
+            <th>@ViewBag.TotalHouseholdExpenses</th>
+        </tr>
+
+        <!-- PERSONAL EXPENDITURE -->
+        <tr class="clickable" data-toggle="collapse" id="personalExpenses" data-target=".personalExpenses">
+            <td><i class="glyphicon glyphicon-plus"> Personal Expenditure</i></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="collapse personalExpenses">
+            <td>Social</td>
+            <td>0.00</td>
+            <td>@ViewBag.PersonalSocialAmount</td>
+        </tr>
+        <tr class="collapse personalExpenses">
+            <td>Gym Membership</td>
+            <td>0.00</td>
+            <td>@ViewBag.PersonalGymMembershipAmount</td>
+        </tr>
+        <tr class="collapse personalExpenses">
+            <td>Sports and Leisure</td>
+            <td>0.00</td>
+            <td>@ViewBag.PersonalSportsExpenseAmount</td>
+        </tr>
+        <tr class="collapse personalExpenses">
+            <td>Holiday</td>
+            <td>0.00</td>
+            <td>@ViewBag.PersonalHolidayExpenseAmount</td>
+        </tr>
+        <tr class="collapse personalExpenses">
+            <td>Savings</td>
+            <td>0.00</td>
+            <td>@ViewBag.PersonalSavingsAmount</td>
+        </tr>
+        <tr class="collapse personalExpenses">
+            <td>Loan Repayment</td>
+            <td>0.00</td>
+            <td>@ViewBag.PersonalLoanRepaymentAmount</td>
+        </tr>
+        <tr class="collapse personalExpenses">
+            <td>Other</td>
+            <td>0.00</td>
+            <td>@ViewBag.PersonalExpenseOtherAmount</td>
+        </tr>
+        <tr class="warning">
+            <th>Personal Expenditure Total</th>
+            <th>0.00</th>
+            <th>@ViewBag.TotalPersonalExpenses</th>
+        </tr>
+
+        <!-- TRAVEL EXPENDITURE -->
+        <tr class="clickable" data-toggle="collapse" id="travelExpenses" data-target=".travelExpenses">
+            <td><i class="glyphicon glyphicon-plus"> Travel Expenditure</i></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="collapse travelExpenses">
+            <td>Bus</td>
+            <td>0.00</td>
+            <td>@ViewBag.TravelBusAmount</td>
+        </tr>
+        <tr class="collapse travelExpenses">
+            <td>Luas</td>
+            <td>0.00</td>
+            <td>@ViewBag.TravelLuasAmount</td>
+        </tr>
+        <tr class="collapse travelExpenses">
+            <td>Taxi</td>
+            <td>0.00</td>
+            <td>@ViewBag.TravelTaxiAmount</td>
+        </tr>
+        <tr class="collapse travelExpenses">
+            <td>Train</td>
+            <td>0.00</td>
+            <td>@ViewBag.TravelTrainAmount</td>
+        </tr>
+        <tr class="collapse travelExpenses">
+            <td>Plane</td>
+            <td>0.00</td>
+            <td>@ViewBag.TravelPlaneAmount</td>
+        </tr>
+        <tr class="collapse travelExpenses">
+            <td>Other</td>
+            <td>0.00</td>
+            <td>@ViewBag.TravelExpenseOtherAmount</td>
+        </tr>
+        <tr class="warning">
+            <th>Travel Expenditure Total</th>
+            <th>0.00</th>
+            <th>@ViewBag.TotalTravelExpenses</th>
+        </tr>
+
+        <!-- UTILITY BILL EXPENDITURE -->
+        <tr class="clickable" data-toggle="collapse" id="utilityBillExpenses" data-target=".utilityBillExpenses">
+            <td><i class="glyphicon glyphicon-plus"> Utility Bill Expenditure</i></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="collapse utilityBillExpenses">
+            <td>Electricity</td>
+            <td>0.00</td>
+            <td>@ViewBag.UtilityBillElectricityAmount</td>
+        </tr>
+        <tr class="collapse utilityBillExpenses">
+            <td>Gas</td>
+            <td>0.00</td>
+            <td>@ViewBag.UtilityBillGasAmount</td>
+        </tr>
+        <tr class="collapse utilityBillExpenses">
+            <td>Refuse/Waste Collection</td>
+            <td>0.00</td>
+            <td>@ViewBag.UtilityBillRefuseCollectionAmount</td>
+        </tr>
+        <tr class="collapse utilityBillExpenses">
+            <td>Irish Water</td>
+            <td>0.00</td>
+            <td>@ViewBag.UtilityBillIrishWaterAmount</td>
+        </tr>
+        <tr class="collapse utilityBillExpenses">
+            <td>Television</td>
+            <td>0.00</td>
+            <td>@ViewBag.UtilityBillTVAmount</td>
+        </tr>
+        <tr class="collapse utilityBillExpenses">
+            <td>Phone/Mobile</td>
+            <td>0.00</td>
+            <td>@ViewBag.UtilityBillPhoneBillAmount</td>
+        </tr>
+        <tr class="collapse utilityBillExpenses">
+            <td>Broadband</td>
+            <td>0.00</td>
+            <td>@ViewBag.UtilityBillBroadbandAmount</td>
+        </tr>
+        <tr class="collapse utilityBillExpenses">
+            <td>Other</td>
+            <td>0.00</td>
+            <td>@ViewBag.UtilityBillOtherExpenseAmount</td>
+        </tr>
+        <tr class="warning">
+            <th>Utility Bill Expenditure Total</th>
+            <th>0.00</th>
+            <th>@ViewBag.TotalUtilityBillExpenses</th>
+        </tr>
+
+    </tbody>
+
+    <!-- Budget Subtotal (display total income and expenditure(car+household+personal+travel+utility)) -->
+    <tr class="danger">
+        <th>Subtotals (Income and Expenditure)</th>
+        <th>@ViewBag.TotalIncome</th>
+        <th>@ViewBag.TotalExpenses</th>
+    </tr>
+    <!-- Budget Balance (total income - total expenditure) -->
+    <tr class="success">
+        <th><h5>Budget Balance</h5></th>
+        <th></th>
+        <th>@ViewBag.BudgetBalance</th>
+    </tr>
+</table>

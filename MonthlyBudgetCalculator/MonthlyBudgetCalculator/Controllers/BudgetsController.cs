@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MonthlyBudgetCalculator.Models;
+using DotNet.Highcharts;
+using DotNet.Highcharts.Options;
+using DotNet.Highcharts.Helpers;
 
 namespace MonthlyBudgetCalculator.Controllers
 {
@@ -270,6 +273,30 @@ namespace MonthlyBudgetCalculator.Controllers
             ViewBag.BudgetBalance = budgetBalance;
             // budgetBalance = globalBudgetBalance;
             return View(b);
+        }
+
+        public ActionResult Charts(int? id)
+        {
+            Budget b = new Budget();
+            // return list of budgets specific to one user
+            b = db.Budgets.Where(user => user.BudgetUserId == id).SingleOrDefault();
+
+            // DotNet.Highcharts.Highcharts chart = new DotNet.Highcharts.Highcharts("chart")
+            Highcharts chart = new Highcharts("chart")
+            .SetCredits(new Credits { Enabled = false}) // remove hyperlink for highchart
+            .SetTooltip(new Tooltip { Crosshairs = new Crosshairs(true, true)})
+            .SetTitle(new Title { Text = "Monthly Budget: " + b.BudgetName})
+            .SetSubtitle(new Subtitle { Text = " Budget Analysis Chart "})
+                .SetXAxis(new XAxis
+                {
+                    Categories = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }
+                })
+                .SetSeries(new Series
+                {
+                    Data = new Data(new object[] { 29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4 })
+                });
+
+            return View(chart);
         }
 
         protected override void Dispose(bool disposing)

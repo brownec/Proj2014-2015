@@ -2,12 +2,12 @@
 @{
     ViewBag.Title = "Summary";
 }
-<p>
+<div>
     <br />
     <a class="btn btn-primary btn-xs" @Html.ActionLink("Home", "Index", "Home")</a>
     <a class="btn btn-primary btn-xs" @Html.ActionLink("My Budgets", "Index", "Budgets")</a>
-</p>
-<h3>Budget Summary Table</h3>
+</div>
+<h4>Budget Summary Table</h4>
 <h6>* Click (+) for breakdown of Income and Expenditure</h6>
 
 <table class="table table-responsive table-hover">
@@ -296,7 +296,7 @@
     </tr>
     <!-- Budget Balance (total income - total expenditure) -->
     <tr class="success">
-        <th><h5>Budget Balance</h5></th>
+        <th><h5>Budget Balance (+/-)</h5></th>
         <th></th>
         <th>@ViewBag.BudgetBalance</th>
     </tr>

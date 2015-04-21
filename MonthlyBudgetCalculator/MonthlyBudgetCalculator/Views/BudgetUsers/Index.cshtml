@@ -84,7 +84,8 @@
                     <a class="btn btn-info dropdown-toggle" aria-expanded="false" href="#" data-toggle="dropdown"><span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li>@Html.ActionLink("Add New Budget", "Create", "Budgets", new { id = item.BudgetUserId }, null)</li>
-                        <li>@Html.ActionLink("My Budgets", "Index", "Budgets", new { id = item.BudgetUserId }, null)</li>
+                        <li>@Html.ActionLink("My Budgets", "Index", "Budgets", new {id = item.BudgetUserId}, null)</li>
+                        <li>@Html.ActionLink("Budget Analysis Chart", "Charts", new { id = item.BudgetUserId })</li>
                         <li>@Html.ActionLink("Edit User Profile", "Edit", new { id = item.BudgetUserId })</li>
                         <li>@Html.ActionLink("User Profile", "Details", new { id = item.BudgetUserId })</li>
                         <li>@Html.ActionLink("Delete User", "Delete", new { id = item.BudgetUserId })</li>

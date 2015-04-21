@@ -69,6 +69,47 @@ namespace MonthlyBudgetCalculator.Controllers
         public ActionResult Create([Bind(Include = "BudgetId,BudgetUserId,BudgetName,BudgetStartDate,BudgetEndDate,IncomePrimaryAmount,IncomeAdditionalAmount,CarTaxAmount,CarInsuranceAmount,CarMaintenanceAmount,CarFuelAmount,CarNctAmount,CarTollChargesAmount,CarExpenseOtherAmount,HouseholdRentMortgageAmount,HouseholdGroceryAmount,HouseholdClothingAmount,HouseholdEducationFeesAmount,HouseholdSchoolSuppliesAmount,HouseholdMedicalExpensesAmount,HouseholdInsuranceAmount,HouseholdMaintenanceAmount,HouseholdExpenseOtherAmount,PersonalSocialAmount,PersonalGymMembershipAmount,PersonalSportsExpenseAmount,PersonalHolidayExpenseAmount,PersonalSavingsAmount,PersonalLoanRepaymentAmount,PersonalHealthInsuranceAmount,PersonalExpenseOtherAmount,TravelBusAmount,TravelLuasAmount,TravelTaxiAmount,TravelTrainAmount,TravelPlaneAmount,TravelExpenseOtherAmount,UtilityBillElectricityAmount,UtilityBillGasAmount,UtilityBillRefuseCollectionAmount,UtilityBillIrishWaterAmount,UtilityBillTVAmount,UtilityBillPhoneBillAmount,UtilityBillBroadbandAmount,UtilityBillOtherExpenseAmount")] Budget budget, int id)
         {
             budget.BudgetUserId = id;
+            // Calculate TotalIncome
+            budget.TotalIncome = (double)budget.IncomePrimaryAmount + (double)budget.IncomeAdditionalAmount;
+            
+            // Calculate TotalCarExpenses
+            budget.TotalCarExpenses = (double)budget.CarTaxAmount + (double)budget.CarInsuranceAmount + (double)budget.CarMaintenanceAmount +
+                (double)budget.CarFuelAmount + (double)budget.CarNctAmount + (double)budget.CarTollChargesAmount +
+                (double)budget.CarExpenseOtherAmount;
+
+            // Calculate TotalHouseholdExpenses
+            budget.TotalHouseholdExpenses = (double)budget.HouseholdRentMortgageAmount + (double)budget.HouseholdGroceryAmount +
+                (double)budget.HouseholdClothingAmount + (double)budget.HouseholdEducationFeesAmount +
+                (double)budget.HouseholdSchoolSuppliesAmount + (double)budget.HouseholdMedicalExpensesAmount +
+                (double)budget.HouseholdInsuranceAmount + (double)budget.HouseholdMaintenanceAmount +
+                (double)budget.HouseholdExpenseOtherAmount;
+            
+            // Calculate TotalPersonalExpenses
+            budget.TotalPersonalExpenses = (double)budget.PersonalSocialAmount + (double)budget.PersonalGymMembershipAmount +
+                (double)budget.PersonalSportsExpenseAmount + (double)budget.PersonalHolidayExpenseAmount +
+                (double)budget.PersonalSavingsAmount + (double)budget.PersonalLoanRepaymentAmount +
+                (double)budget.PersonalHealthInsuranceAmount + (double)budget.PersonalExpenseOtherAmount;
+
+            // Calculate TotalTravelExpenses
+            budget.TotalTravelExpenses = (double)budget.TravelBusAmount + (double)budget.TravelLuasAmount +
+                (double)budget.TravelTaxiAmount + (double)budget.PersonalHolidayExpenseAmount +
+                (double)budget.TravelTrainAmount + (double)budget.TravelPlaneAmount +
+                (double)budget.TravelExpenseOtherAmount;
+
+            // Calculate TotalUtilityBillExpenses
+            budget.TotalUtilityBillExpenses = (double)budget.UtilityBillElectricityAmount + (double)budget.UtilityBillGasAmount +
+                (double)budget.UtilityBillRefuseCollectionAmount + (double)budget.UtilityBillIrishWaterAmount +
+                (double)budget.UtilityBillTVAmount + (double)budget.UtilityBillPhoneBillAmount +
+                (double)budget.UtilityBillBroadbandAmount + (double)budget.UtilityBillOtherExpenseAmount;
+
+            // Calculate Subtotals
+            budget.TotalExpenses = (double)budget.TotalCarExpenses + (double)budget.TotalHouseholdExpenses +
+                (double)budget.TotalPersonalExpenses + (double)budget.TotalTravelExpenses +
+                (double)budget.TotalUtilityBillExpenses;
+
+            // Calculate Budget Balance
+            budget.BudgetBalance = (double)budget.TotalIncome - (double)budget.TotalExpenses;
+
             if (ModelState.IsValid)
             {
                 db.Budgets.Add(budget);
@@ -146,217 +187,139 @@ namespace MonthlyBudgetCalculator.Controllers
             Budget b = new Budget();
             b = db.Budgets.Where(p => p.BudgetId == id).SingleOrDefault();
 
-            // -------------------- INCOME --------------------
-            double totalIncome = 0;
-            ViewBag.IncomePrimaryAmount = b.IncomePrimaryAmount;
-            ViewBag.IncomeAdditionalAmount = b.IncomeAdditionalAmount;
-            // Calculate TotalIncome and set result as globalTotalIncome
-            // sets totalIncome initially equal to primaryIncome
-            totalIncome = (double)b.IncomePrimaryAmount;
-            // if there is Additional Income execute the following
-            if(b.IncomeAdditionalAmount != null)
-            {
-                totalIncome = (double)b.IncomePrimaryAmount + (double)b.IncomeAdditionalAmount;
-            }
-            // pass TotalIncome to Summary.cshtml
-            ViewBag.TotalIncome = totalIncome;
-            // totalIncome = globalTotalIncome;
-            // -------------------- END OF INCOME --------------------
+            //// -------------------- INCOME --------------------
+            //double totalIncome = 0;
+            //ViewBag.IncomePrimaryAmount = b.IncomePrimaryAmount;
+            //ViewBag.IncomeAdditionalAmount = b.IncomeAdditionalAmount;
+            //// Calculate TotalIncome and set result as globalTotalIncome
+            //// sets totalIncome initially equal to primaryIncome
+            //totalIncome = (double)b.IncomePrimaryAmount;
+            //// if there is Additional Income execute the following
+            //if(b.IncomeAdditionalAmount != null)
+            //{
+            //    totalIncome = (double)b.IncomePrimaryAmount + (double)b.IncomeAdditionalAmount;
+            //}
+            //// pass TotalIncome to Summary.cshtml
+            //ViewBag.TotalIncome = totalIncome;
+            //// totalIncome = globalTotalIncome;
+            //// -------------------- END OF INCOME --------------------
 
-            // -------------------- CAR EXPENDITURE --------------------
-            double totalCarExpenses = 0;
-            ViewBag.CarTaxAmount = b.CarTaxAmount;
-            ViewBag.CarInsuranceAmount = b.CarInsuranceAmount;
-            ViewBag.CarMaintenanceAmount = b.CarMaintenanceAmount;
-            ViewBag.CarFuelAmount = b.CarFuelAmount;
-            ViewBag.CarNctAmount = b.CarNctAmount;
-            ViewBag.CarTollChargesAmount = b.CarTollChargesAmount;
-            ViewBag.CarExpenseOtherAmount = b.CarExpenseOtherAmount;
-            // Calculate TotalCarExpenses and set result as globalTotalCarExpense
-            totalCarExpenses = (double)b.CarTaxAmount + (double)b.CarInsuranceAmount + (double)b.CarMaintenanceAmount +
-                (double)b.CarFuelAmount + (double)b.CarNctAmount + (double)b.CarTollChargesAmount +
-                (double)b.CarExpenseOtherAmount;
-            // pass TotalCarExpenses to Summary.cshtml
-            ViewBag.TotalCarExpenses = totalCarExpenses;
-            // totalCarExpenses = b.TotalCarExpenses;
-            // -------------------- END OF CAR EXPENDITURE --------------------
+            //// -------------------- CAR EXPENDITURE --------------------
+            //double totalCarExpenses = 0;
+            //ViewBag.CarTaxAmount = b.CarTaxAmount;
+            //ViewBag.CarInsuranceAmount = b.CarInsuranceAmount;
+            //ViewBag.CarMaintenanceAmount = b.CarMaintenanceAmount;
+            //ViewBag.CarFuelAmount = b.CarFuelAmount;
+            //ViewBag.CarNctAmount = b.CarNctAmount;
+            //ViewBag.CarTollChargesAmount = b.CarTollChargesAmount;
+            //ViewBag.CarExpenseOtherAmount = b.CarExpenseOtherAmount;
+            //// Calculate TotalCarExpenses and set result as globalTotalCarExpense
+            //totalCarExpenses = (double)b.CarTaxAmount + (double)b.CarInsuranceAmount + (double)b.CarMaintenanceAmount +
+            //    (double)b.CarFuelAmount + (double)b.CarNctAmount + (double)b.CarTollChargesAmount +
+            //    (double)b.CarExpenseOtherAmount;
+            //// pass TotalCarExpenses to Summary.cshtml
+            //ViewBag.TotalCarExpenses = totalCarExpenses;
+            //// totalCarExpenses = b.TotalCarExpenses;
+            //// -------------------- END OF CAR EXPENDITURE --------------------
 
-            // -------------------- HOUSEHOLD EXPENDITURE --------------------
-            double totalHouseholdExpenses = 0;
-            ViewBag.HouseholdRentMortgageAmount = b.HouseholdRentMortgageAmount;
-            ViewBag.HouseholdGroceryAmount = b.HouseholdGroceryAmount;
-            ViewBag.HouseholdClothingAmount = b.HouseholdClothingAmount;
-            ViewBag.HouseholdEducationFeesAmount = b.HouseholdEducationFeesAmount;
-            ViewBag.HouseholdSchoolSuppliesAmount = b.HouseholdSchoolSuppliesAmount;
-            ViewBag.HouseholdMedicalExpensesAmount = b.HouseholdMedicalExpensesAmount;
-            ViewBag.HouseholdInsuranceAmount = b.HouseholdInsuranceAmount;
-            ViewBag.HouseholdMaintenanceAmount = b.HouseholdMaintenanceAmount;
-            ViewBag.HouseholdExpenseOtherAmount = b.HouseholdExpenseOtherAmount;
-            // Calculate TotalHouseholdExpenses and set result as globalTotalHouseholdExpenses
-            totalHouseholdExpenses = (double)b.HouseholdRentMortgageAmount + (double)b.HouseholdGroceryAmount +
-                (double)b.HouseholdClothingAmount + (double)b.HouseholdEducationFeesAmount +
-                (double)b.HouseholdSchoolSuppliesAmount + (double)b.HouseholdMedicalExpensesAmount +
-                (double)b.HouseholdInsuranceAmount + (double)b.HouseholdMaintenanceAmount +
-                (double)b.HouseholdExpenseOtherAmount;
-            // pass TotalHouseholdExpenses to Summary.cshtml
-            ViewBag.TotalHouseholdExpenses = totalHouseholdExpenses;
-            // totalHouseholdExpenses = globalTotalHouseholdExpenses;
-            // -------------------- END OF HOUSEHOLD EXPENDITURE --------------------
+            //// -------------------- HOUSEHOLD EXPENDITURE --------------------
+            //double totalHouseholdExpenses = 0;
+            //ViewBag.HouseholdRentMortgageAmount = b.HouseholdRentMortgageAmount;
+            //ViewBag.HouseholdGroceryAmount = b.HouseholdGroceryAmount;
+            //ViewBag.HouseholdClothingAmount = b.HouseholdClothingAmount;
+            //ViewBag.HouseholdEducationFeesAmount = b.HouseholdEducationFeesAmount;
+            //ViewBag.HouseholdSchoolSuppliesAmount = b.HouseholdSchoolSuppliesAmount;
+            //ViewBag.HouseholdMedicalExpensesAmount = b.HouseholdMedicalExpensesAmount;
+            //ViewBag.HouseholdInsuranceAmount = b.HouseholdInsuranceAmount;
+            //ViewBag.HouseholdMaintenanceAmount = b.HouseholdMaintenanceAmount;
+            //ViewBag.HouseholdExpenseOtherAmount = b.HouseholdExpenseOtherAmount;
+            //// Calculate TotalHouseholdExpenses
+            //totalHouseholdExpenses = (double)b.HouseholdRentMortgageAmount + (double)b.HouseholdGroceryAmount +
+            //    (double)b.HouseholdClothingAmount + (double)b.HouseholdEducationFeesAmount +
+            //    (double)b.HouseholdSchoolSuppliesAmount + (double)b.HouseholdMedicalExpensesAmount +
+            //    (double)b.HouseholdInsuranceAmount + (double)b.HouseholdMaintenanceAmount +
+            //    (double)b.HouseholdExpenseOtherAmount;
+            //// pass TotalHouseholdExpenses to Summary.cshtml
+            //ViewBag.TotalHouseholdExpenses = totalHouseholdExpenses;
+            //// totalHouseholdExpenses = globalTotalHouseholdExpenses;
+            //// -------------------- END OF HOUSEHOLD EXPENDITURE --------------------
 
-            // -------------------- PERSONAL EXPENDITURE --------------------
-            double totalPersonalExpenses = 0;
-            ViewBag.PersonalSocialAmount = b.PersonalSocialAmount;
-            ViewBag.PersonalGymMembershipAmount = b.PersonalGymMembershipAmount;
-            ViewBag.PersonalSportsExpenseAmount = b.PersonalSportsExpenseAmount;
-            ViewBag.PersonalHolidayExpenseAmount = b.PersonalHolidayExpenseAmount;
-            ViewBag.PersonalSavingsAmount = b.PersonalSavingsAmount;
-            ViewBag.PersonalLoanRepaymentAmount = b.PersonalLoanRepaymentAmount;
-            ViewBag.PersonalHealthInsuranceAmount = b.PersonalHealthInsuranceAmount;
-            ViewBag.PersonalExpenseOtherAmount = b.PersonalExpenseOtherAmount;
-            // Calculate TotalPersonalExpenses and set result as globalTotalPersonalExpenses
-            totalPersonalExpenses = (double)b.PersonalSocialAmount + (double)b.PersonalGymMembershipAmount +
-                (double)b.PersonalSportsExpenseAmount + (double)b.PersonalHolidayExpenseAmount +
-                (double)b.PersonalSavingsAmount + (double)b.PersonalLoanRepaymentAmount +
-                (double)b.PersonalHealthInsuranceAmount + (double)b.PersonalExpenseOtherAmount;
-            // pass TotalPersonalExpenses to Summary.cshtml
-            ViewBag.TotalPersonalExpenses = totalPersonalExpenses;
-            // totalPersonalExpenses = globalTotalPersonalExpenses;
-            // -------------------- END OF PERSONAL EXPENDITURE --------------------
+            //// -------------------- PERSONAL EXPENDITURE --------------------
+            //double totalPersonalExpenses = 0;
+            //ViewBag.PersonalSocialAmount = b.PersonalSocialAmount;
+            //ViewBag.PersonalGymMembershipAmount = b.PersonalGymMembershipAmount;
+            //ViewBag.PersonalSportsExpenseAmount = b.PersonalSportsExpenseAmount;
+            //ViewBag.PersonalHolidayExpenseAmount = b.PersonalHolidayExpenseAmount;
+            //ViewBag.PersonalSavingsAmount = b.PersonalSavingsAmount;
+            //ViewBag.PersonalLoanRepaymentAmount = b.PersonalLoanRepaymentAmount;
+            //ViewBag.PersonalHealthInsuranceAmount = b.PersonalHealthInsuranceAmount;
+            //ViewBag.PersonalExpenseOtherAmount = b.PersonalExpenseOtherAmount;
+            //// Calculate TotalPersonalExpenses and set result as globalTotalPersonalExpenses
+            //totalPersonalExpenses = (double)b.PersonalSocialAmount + (double)b.PersonalGymMembershipAmount +
+            //    (double)b.PersonalSportsExpenseAmount + (double)b.PersonalHolidayExpenseAmount +
+            //    (double)b.PersonalSavingsAmount + (double)b.PersonalLoanRepaymentAmount +
+            //    (double)b.PersonalHealthInsuranceAmount + (double)b.PersonalExpenseOtherAmount;
+            //// pass TotalPersonalExpenses to Summary.cshtml
+            //ViewBag.TotalPersonalExpenses = totalPersonalExpenses;
+            //// totalPersonalExpenses = globalTotalPersonalExpenses;
+            //// -------------------- END OF PERSONAL EXPENDITURE --------------------
 
-            // -------------------- TRAVEL EXPENDITURE --------------------
-            double totalTravelExpenses = 0;
-            ViewBag.TravelBusAmount = b.TravelBusAmount;
-            ViewBag.TravelLuasAmount = b.TravelLuasAmount;
-            ViewBag.TravelTaxiAmount = b.TravelTaxiAmount;
-            ViewBag.TravelTrainAmount = b.TravelTrainAmount;
-            ViewBag.TravelPlaneAmount = b.TravelPlaneAmount;
-            ViewBag.TravelExpenseOtherAmount = b.TravelExpenseOtherAmount;
-            // Calculate TotalTravelExpenses and set result as globalTotalTravelExpenses
-            totalTravelExpenses = (double)b.TravelBusAmount + (double)b.TravelLuasAmount +
-                (double)b.TravelTaxiAmount + (double)b.PersonalHolidayExpenseAmount +
-                (double)b.TravelTrainAmount + (double)b.TravelPlaneAmount +
-                (double)b.TravelExpenseOtherAmount;
-            // pass TotalTravelExpenses to Summary.cshtml
-            ViewBag.TotalTravelExpenses = totalTravelExpenses;
-            // totalTravelExpenses = globalTotalTravelExpenses;
-            // -------------------- END OF TRAVEL EXPENDITURE --------------------
+            //// -------------------- TRAVEL EXPENDITURE --------------------
+            //double totalTravelExpenses = 0;
+            //ViewBag.TravelBusAmount = b.TravelBusAmount;
+            //ViewBag.TravelLuasAmount = b.TravelLuasAmount;
+            //ViewBag.TravelTaxiAmount = b.TravelTaxiAmount;
+            //ViewBag.TravelTrainAmount = b.TravelTrainAmount;
+            //ViewBag.TravelPlaneAmount = b.TravelPlaneAmount;
+            //ViewBag.TravelExpenseOtherAmount = b.TravelExpenseOtherAmount;
+            //// Calculate TotalTravelExpenses and set result as globalTotalTravelExpenses
+            //totalTravelExpenses = (double)b.TravelBusAmount + (double)b.TravelLuasAmount +
+            //    (double)b.TravelTaxiAmount + (double)b.PersonalHolidayExpenseAmount +
+            //    (double)b.TravelTrainAmount + (double)b.TravelPlaneAmount +
+            //    (double)b.TravelExpenseOtherAmount;
+            //// pass TotalTravelExpenses to Summary.cshtml
+            //ViewBag.TotalTravelExpenses = totalTravelExpenses;
+            //// totalTravelExpenses = globalTotalTravelExpenses;
+            //// -------------------- END OF TRAVEL EXPENDITURE --------------------
 
-            // -------------------- UTILITY BILL EXPENDITURE --------------------
-            double totalUtilityBillExpenses = 0;
-            ViewBag.UtilityBillElectricityAmount = b.UtilityBillElectricityAmount;
-            ViewBag.UtilityBillGasAmount = b.UtilityBillGasAmount;
-            ViewBag.UtilityBillRefuseCollectionAmount = b.UtilityBillRefuseCollectionAmount;
-            ViewBag.UtilityBillIrishWaterAmount = b.UtilityBillIrishWaterAmount;
-            ViewBag.UtilityBillTVAmount = b.UtilityBillTVAmount;
-            ViewBag.UtilityBillPhoneBillAmount = b.UtilityBillPhoneBillAmount;
-            ViewBag.UtilityBillBroadbandAmount = b.UtilityBillBroadbandAmount;
-            ViewBag.UtilityBillOtherExpenseAmount = b.UtilityBillOtherExpenseAmount;
-            // Calculate TotalUtilityBillExpenses and set result as globalTotalPersonalExpenses
-            totalUtilityBillExpenses = (double)b.UtilityBillElectricityAmount + (double)b.UtilityBillGasAmount +
-                (double)b.UtilityBillRefuseCollectionAmount + (double)b.UtilityBillIrishWaterAmount +
-                (double)b.UtilityBillTVAmount + (double)b.UtilityBillPhoneBillAmount +
-                (double)b.UtilityBillBroadbandAmount + (double)b.UtilityBillOtherExpenseAmount;
-            // pass TotalUtilityBillExpenses to Summary.cshtml
-            ViewBag.TotalUtilityBillExpenses = totalUtilityBillExpenses;
-            // totalUtilityBillExpenses = globalTotalUtilityBillExpenses;
-            // -------------------- END OF UTILITY BILL EXPENDITURE --------------------
+            //// -------------------- UTILITY BILL EXPENDITURE --------------------
+            //double totalUtilityBillExpenses = 0;
+            //ViewBag.UtilityBillElectricityAmount = b.UtilityBillElectricityAmount;
+            //ViewBag.UtilityBillGasAmount = b.UtilityBillGasAmount;
+            //ViewBag.UtilityBillRefuseCollectionAmount = b.UtilityBillRefuseCollectionAmount;
+            //ViewBag.UtilityBillIrishWaterAmount = b.UtilityBillIrishWaterAmount;
+            //ViewBag.UtilityBillTVAmount = b.UtilityBillTVAmount;
+            //ViewBag.UtilityBillPhoneBillAmount = b.UtilityBillPhoneBillAmount;
+            //ViewBag.UtilityBillBroadbandAmount = b.UtilityBillBroadbandAmount;
+            //ViewBag.UtilityBillOtherExpenseAmount = b.UtilityBillOtherExpenseAmount;
+            //// Calculate TotalUtilityBillExpenses and set result as globalTotalPersonalExpenses
+            //totalUtilityBillExpenses = (double)b.UtilityBillElectricityAmount + (double)b.UtilityBillGasAmount +
+            //    (double)b.UtilityBillRefuseCollectionAmount + (double)b.UtilityBillIrishWaterAmount +
+            //    (double)b.UtilityBillTVAmount + (double)b.UtilityBillPhoneBillAmount +
+            //    (double)b.UtilityBillBroadbandAmount + (double)b.UtilityBillOtherExpenseAmount;
+            //// pass TotalUtilityBillExpenses to Summary.cshtml
+            //ViewBag.TotalUtilityBillExpenses = totalUtilityBillExpenses;
+            //// totalUtilityBillExpenses = globalTotalUtilityBillExpenses;
+            //// -------------------- END OF UTILITY BILL EXPENDITURE --------------------
 
-            // -------------------- SUBTOTAL CALCULATION -------------------- 
-            // INCOME - same as TotalIncome calculated above
-            // -------------------- TOTAL EXPENSES CALCULATION --------------------
-            double totalExpenses = 0;
-            totalExpenses = (double)totalCarExpenses + (double)totalHouseholdExpenses +
-                (double)totalPersonalExpenses + (double)totalTravelExpenses +
-                (double)totalUtilityBillExpenses;
-            ViewBag.TotalExpenses = totalExpenses;
-            // totalExpenses = globalTotalExpenses;
-            // -------------------- BUDGET BALANCE CALCULATION --------------------
-            double budgetBalance = 0;
-            budgetBalance = (double)totalIncome - (double)totalExpenses;
-            ViewBag.BudgetBalance = budgetBalance;
-            // budgetBalance = globalBudgetBalance;
+            //// -------------------- SUBTOTAL CALCULATION -------------------- 
+            //// INCOME - same as TotalIncome calculated above
+            //// -------------------- TOTAL EXPENSES CALCULATION --------------------
+            //double totalExpenses = 0;
+            //totalExpenses = (double)totalCarExpenses + (double)totalHouseholdExpenses +
+            //    (double)totalPersonalExpenses + (double)totalTravelExpenses +
+            //    (double)totalUtilityBillExpenses;
+            //ViewBag.TotalExpenses = totalExpenses;
+            //// totalExpenses = globalTotalExpenses;
+            //// -------------------- BUDGET BALANCE CALCULATION --------------------
+            //double budgetBalance = 0;
+            //budgetBalance = (double)totalIncome - (double)totalExpenses;
+            //ViewBag.BudgetBalance = budgetBalance;
+            //// budgetBalance = globalBudgetBalance;
             return View(b);
         }
 
-        // ******************** BUDGET ANALYSIS CHARTS ********************
-        public ActionResult Charts(int? id)
-        {
-            Budget b = new Budget();
-            // return list of budgets specific to one user
-            b = db.Budgets.Where(user => user.BudgetUserId == id).SingleOrDefault();
-
-            // DotNet.Highcharts.Highcharts chart = new DotNet.Highcharts.Highcharts("chart")
-            Highcharts chart = new Highcharts("chart")
-
-            .InitChart(new Chart
-            {
-                DefaultSeriesType = ChartTypes.Line,
-                MarginRight = 130,
-                MarginBottom = 25,
-                ClassName = "chart"
-            })
-
-
-
-            .SetTitle(new Title
-            {
-                Text = "Monthly Budget: " + b.BudgetName
-            })
-
-            .SetSubtitle(new Subtitle
-            {
-                Text = " Budget Analysis Chart "
-            })
-
-            .SetXAxis(new XAxis
-            {
-                Categories = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }
-            })
-
-            .SetYAxis(new YAxis
-            {
-                Title = new YAxisTitle
-                {
-                    Text = "TEXT HERE"
-                },
-                PlotLines = new[]
-                { 
-                    new YAxisPlotLines
-                    {
-                        Value = 0,
-                        Width = 1,
-                        Color = ColorTranslator.FromHtml("#808080")
-                    }
-                }
-            })
-
-            .SetTooltip(new Tooltip
-            {
-                Crosshairs = new Crosshairs(true, true)
-            })
-
-            .SetLegend(new Legend
-            {
-                Layout = Layouts.Vertical,
-                Align = HorizontalAligns.Right,
-                VerticalAlign = VerticalAligns.Top,
-                X = -10,
-                Y = 100,
-                BorderWidth = 0
-            })
-
-            .SetSeries(new Series
-            {
-                Data = new Data(new object[] { 29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4 })
-            })
-
-            .SetCredits(new Credits
-            {
-                Enabled = false
-            }); // remove hyperlink for highchart
-
-            return View(chart);
-        }
+       
 
         // ******************** BUDGET ANALYSIS FORECAST ********************
         public ActionResult Forecast(int? id)

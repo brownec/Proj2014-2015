@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Monthly Budget Calculator</title>
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 
@@ -50,9 +51,9 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+ 
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script src="~/Scripts/Highcharts-4.0.1/js/highcharts-all.js"></script>
+    @*<script src="~/Scripts/Highcharts-4.0.1/js/highcharts-all.js"></script>*@
 </body>
 </html>

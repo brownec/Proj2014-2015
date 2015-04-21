@@ -274,6 +274,14 @@ namespace MonthlyBudgetCalculator.Models
         [Display(Name = "Total Utility Bill Expenses")]
         public double TotalUtilityBillExpenses { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Total Expenditure")]
+        public double TotalExpenses { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Budget Balance")]
+        public double BudgetBalance { get; set; }
+
         // navigation properties
         public virtual BudgetUser BudgetUser { get; set; }
     }

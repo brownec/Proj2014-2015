@@ -7,6 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MonthlyBudgetCalculator.Models;
+using DotNet.Highcharts;
+using DotNet.Highcharts.Enums;
+using DotNet.Highcharts.Helpers;
+using DotNet.Highcharts.Options;
+using Point = DotNet.Highcharts.Options.Point;
+using System.Drawing;
 
 namespace MonthlyBudgetCalculator.Controllers
 {
@@ -113,6 +119,110 @@ namespace MonthlyBudgetCalculator.Controllers
             db.BudgetUsers.Remove(budgetUser);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // ******************** BUDGET ANALYSIS CHARTS ********************
+        public ActionResult Charts(int? id)
+        {
+            BudgetUser u = new BudgetUser();
+            // return list of budgets specific to one user
+            u = db.BudgetUsers.Where(user => user.BudgetUserId == id).SingleOrDefault();
+
+            var total = from e in db.Budgets where e.BudgetUserId == id select e;
+
+            int size = total.Count();
+            System.Diagnostics.Debug.WriteLine("size: " + size);
+
+            // DotNet.Highcharts.Highcharts chart = new DotNet.Highcharts.Highcharts("chart")
+            object[] income = new object[size];
+            int c1 = 0;
+
+            foreach (var item in total)
+            {
+                income[c1] = item.TotalIncome;
+                c1++;
+            }
+
+            String[] budgetNames = new string[size];
+            int c2 = 0;
+            foreach (var item in total)
+            {
+                budgetNames[c2] = item.BudgetName;
+                c2++;
+            }
+            int value = 0;
+            Highcharts chart = new Highcharts("chart")
+
+
+            .InitChart(new Chart
+            {
+                DefaultSeriesType = ChartTypes.Line,
+                MarginRight = 130,
+                MarginBottom = 25,
+                ClassName = "chart"
+            })
+
+            .SetTitle(new Title
+            {
+                Text = "Monthly Budget: "
+            })
+
+            .SetSubtitle(new Subtitle
+            {
+                Text = " Budget Analysis Chart "
+            })
+
+            .SetXAxis(new XAxis
+            {
+                Categories = budgetNames
+                //Categories = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }
+            })
+
+            .SetYAxis(new YAxis
+            {
+                Title = new YAxisTitle
+                {
+                    Text = "TEXT HERE"
+                },
+                PlotLines = new[]
+                 { 
+                     new YAxisPlotLines
+                     {
+                         Value = 0,
+                         Width = 1,
+                         Color = ColorTranslator.FromHtml("#808080")
+                     }
+                 }
+            })
+
+            .SetTooltip(new Tooltip
+            {
+                Crosshairs = new Crosshairs(true, true)
+            })
+
+            .SetLegend(new Legend
+            {
+                Layout = Layouts.Vertical,
+                Align = HorizontalAligns.Right,
+                VerticalAlign = VerticalAligns.Top,
+                X = -10,
+                Y = 100,
+                BorderWidth = 0
+            })
+
+            //.SetSeries(new Series
+             .SetSeries(new []
+            {
+                new Series{Name = "Income",Data = new Data(income)}
+                //Data = new Data(new object[] { 29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4 })
+            })
+
+            .SetCredits(new Credits
+            {
+                Enabled = false
+            }); // remove hyperlink for highchart
+        
+            return View(chart);
         }
 
         protected override void Dispose(bool disposing)

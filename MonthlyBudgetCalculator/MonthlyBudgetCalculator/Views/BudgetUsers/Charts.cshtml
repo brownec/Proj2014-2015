@@ -1,0 +1,14 @@
+﻿@Scripts.Render("~/bundles/jQuery")
+@model DotNet.Highcharts.Highcharts
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/Highcharts-4.0.1/js/highcharts.js"></script>
+@*@model IEnumerable<MonthlyBudgetCalculator.Models.Budget>*@
+@{
+    ViewBag.Title = "Charts";
+}
+<br />
+<h4>Budget Analysis Charts New</h4>
+
+@(Model)
+
+

@@ -6,12 +6,12 @@
 <p>
     <br />
     <a class="btn btn-primary btn-xs" @Html.ActionLink("Home", "Index", "Home")</a>
-    <a class="btn btn-primary btn-xs" @Html.ActionLink("Users", "Index", "BudgetUsers")</a>
+    <a class="btn btn-primary btn-xs" @Html.ActionLink("Application Users", "Index", "BudgetUsers")</a>
 </p>
-<h4>Delete User</h4>
-
+<h5 class="text-info">Delete User</h5>
+<h6>*If you are sure you want to remove this user, click <strong>Delete User</strong> button</h6>
 <div>
-    <hr />
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.LastName)
@@ -98,8 +98,7 @@
    @using (Html.BeginForm())
    {
     @Html.AntiForgeryToken()
-    <h5>Click Delete User button to remove user.</h5>
-    <div class="form-actions no-color">
+   <div class="form-actions no-color">
         <input type="submit" value="Delete User" class="btn btn-danger" />
     </div>
    }

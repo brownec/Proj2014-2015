@@ -319,8 +319,6 @@ namespace MonthlyBudgetCalculator.Controllers
             return View(b);
         }
 
-       
-
         // ******************** BUDGET ANALYSIS FORECAST ********************
         public ActionResult Forecast(int? id)
         {
@@ -328,22 +326,38 @@ namespace MonthlyBudgetCalculator.Controllers
             // return list of budgets specific to one user
             b = db.Budgets.Where(user => user.BudgetUserId == id).SingleOrDefault();
 
-            // -------------------- SELECTION SORT --------------------
+            // -------------------- BUBBLE SORT --------------------
             // -------------------- BUDGET BALANCES --------------------
             /* idea to sort the list of budget balances and display top 5
              * based on whether they highest balances or lowest balances
             */
-            
-            //int upper, inner;
-            //int minimumBudgetBalance, tempBudgetBalance;
-            //for(int outer = 0; outer <= upper; outer ++)
+            //var balances = from e in db.Budgets where e.BudgetUserId == id select e;
+            //int size = balances.Count(); // get the size of the number of results
+            //object[] budgetBalances = new object[size];
+            //for (int i = budgetBalances.Length - 1; i > 0; i--)
             //{
-            //    minimumBudgetBalance = outer;
-            //    for(int inner = outer + 1; inner <= upper; inner ++ )
+            //    for (int j = 0; j < i - 1; j++)
+            //    {
+            //        if (budgetBalances[j] <= budgetBalances[j + 1])
+            //        {
+            //            int maximumBalance = budgetBalances[j];
+            //            budgetBalances[j] = budgetBalances[j + 1];
+            //            budgetBalances[j + 1] = maximumBalance;
+            //        }
+            //    }
+            //}
+
+            //int i; 
+            //int j = 0;
+            //int minimumBudgetBalance, tempBudgetBalance;
+            //for(i = 0; i <= j; i ++)
+            //{
+            //    minimumBudgetBalance = i;
+            //    for(int inner = i + 1; inner <= j; inner ++ )
             //    if(b[inner] < b[minimumBudgetBalance])
             //        minimumBudgetBalance = inner;
-            //    tempBudgetBalance = b[outer];
-            //    b[outer] = b[minimumBudgetBalance];
+            //    tempBudgetBalance = b[j];
+            //    b[j] = b[minimumBudgetBalance];
             //    b[minimumBudgetBalance] = tempBudgetBalance;
             //    return minimumBudgetBalance;
             //}

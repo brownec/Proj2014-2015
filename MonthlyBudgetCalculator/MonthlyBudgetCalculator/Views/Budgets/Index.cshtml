@@ -6,24 +6,22 @@
 <p>
     <br />
     <a class="btn btn-primary btn-xs" @Html.ActionLink("Home", "Index", "Home")</a>
-    <a class="btn btn-primary btn-xs" @Html.ActionLink("Edit Budget", "Edit")</a>
-    <a class="btn btn-primary btn-xs" @Html.ActionLink("Budget Details", "Details")</a>
-    <a class="btn btn-primary btn-xs" @Html.ActionLink("Delete Budget", "Delete")</a>
+    <a class="btn btn-primary btn-xs" @Html.ActionLink("Application Users", "Index", "BudgetUsers")</a>
 </p>
-<h3>My Budgets</h3>
-
+<h5 class="text-info">My Saved Budgets</h5>
+<h6>*Use <strong>Options</strong> to view Budget Analysis and Details or Edit or Delete budget</h6>
 <table class="table">
     <tr>
-        <th>
+        @*<th class="text-info">
             @Html.DisplayNameFor(model => model.BudgetUser.LastName)
-        </th>
-        <th>
+        </th>*@
+        <th class="text-info">
             @Html.DisplayNameFor(model => model.BudgetName)
         </th>
-        <th>
+        <th class="text-info">
             @Html.DisplayNameFor(model => model.BudgetStartDate)
         </th>
-        <th>
+        <th class="text-info">
             @Html.DisplayNameFor(model => model.BudgetEndDate)
         </th>
         @*<th>
@@ -31,11 +29,11 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IncomeAdditionalAmount)
-        </th>
-        <th>
+        </th>*@
+        <th class="text-info">
             @Html.DisplayNameFor(model => model.TotalIncome)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.CarTaxAmount)
         </th>
         <th>
@@ -55,11 +53,11 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CarExpenseOtherAmount)
-        </th>
-        <th>
+        </th>*@
+        @*<th class="text-info">
             @Html.DisplayNameFor(model => model.TotalCarExpenses)
-        </th>
-        <th>
+        </th>*@
+        @*<th>
             @Html.DisplayNameFor(model => model.HouseholdRentMortgageAmount)
         </th>
         <th>
@@ -85,11 +83,11 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.HouseholdExpenseOtherAmount)
-        </th>
-        <th>
+        </th>*@
+        @*<th class="text-info">
             @Html.DisplayNameFor(model => model.TotalHouseholdExpenses)
-        </th>
-        <th>
+        </th>*@
+        @*<th>
             @Html.DisplayNameFor(model => model.PersonalSocialAmount)
         </th>
         <th>
@@ -112,11 +110,11 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PersonalExpenseOtherAmount)
-        </th>
-        <th>
+        </th>*@
+        @*<th class="text-info">
             @Html.DisplayNameFor(model => model.TotalPersonalExpenses)
-        </th>
-        <th>
+        </th>*@
+        @*<th>
             @Html.DisplayNameFor(model => model.TravelBusAmount)
         </th>
         <th>
@@ -133,11 +131,11 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TravelExpenseOtherAmount)
-        </th>
-        <th>
+        </th>*@
+        @*<th class="text-info">
             @Html.DisplayNameFor(model => model.TotalTravelExpenses)
-        </th>
-        <th>
+        </th>*@
+        @*<th>
             @Html.DisplayNameFor(model => model.UtilityBillElectricityAmount)
         </th>
         <th>
@@ -160,17 +158,23 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UtilityBillOtherExpenseAmount)
-        </th>
-        <th>
+        </th>*@
+        @*<th class="text-info">
             @Html.DisplayNameFor(model => model.TotalUtilityBillExpenses)
         </th>*@
+        <th class="text-info">
+            @Html.DisplayNameFor(model => model.TotalExpenses)
+        </th>
+        <th class="text-info">
+            @Html.DisplayNameFor(model => model.BudgetBalance)
+        </th>
      </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.BudgetUser.LastName)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.BudgetName)
         </td>
@@ -185,11 +189,11 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IncomeAdditionalAmount)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.TotalIncome)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CarTaxAmount)
         </td>
         <td>
@@ -209,11 +213,11 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CarExpenseOtherAmount)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.TotalCarExpenses)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.HouseholdRentMortgageAmount)
         </td>
         <td>
@@ -239,11 +243,11 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.HouseholdExpenseOtherAmount)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.TotalHouseholdExpenses)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.PersonalSocialAmount)
         </td>
         <td>
@@ -266,11 +270,11 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PersonalExpenseOtherAmount)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.TotalPersonalExpenses)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.TravelBusAmount)
         </td>
         <td>
@@ -287,11 +291,11 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TravelExpenseOtherAmount)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.TotalTravelExpenses)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.UtilityBillElectricityAmount)
         </td>
         <td>
@@ -314,21 +318,29 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UtilityBillOtherExpenseAmount)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.TotalUtilityBillExpenses)
         </td>*@
 
         <td>
+            @Html.DisplayFor(modelItem => item.TotalExpenses)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BudgetBalance)
+        </td>
+
+
+
+        <td>
             <div class="btn-group btn-sm">
-                <a class="btn btn-info" href="#">Select</a>
+                <a class="btn btn-info" href="#">Options</a>
                 <a class="btn btn-info dropdown-toggle" aria-expanded="false" href="#" data-toggle="dropdown"><span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li>@Html.ActionLink("Budget Analysis Summary", "Summary", new { id = item.BudgetId })</li>
-                    <li>@Html.ActionLink("Budget Analysis Charts", "Charts", new { id = item.BudgetId })</li>
                     <li>@Html.ActionLink("Budget Analysis Forecast", "Forecast", new { id = item.BudgetId })</li>
-                    <li>@Html.ActionLink("Edit Budget", "Edit", new { id = item.BudgetId })</li>
                     <li>@Html.ActionLink("Budget Details", "Details", new { id = item.BudgetId })</li>
+                    <li>@Html.ActionLink("Edit Budget", "Edit", new { id = item.BudgetId })</li>
                     <li>@Html.ActionLink("Delete Budget", "Delete", new { id = item.BudgetId })</li>
                 </ul>
             </div>

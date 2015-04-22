@@ -131,7 +131,7 @@ namespace MonthlyBudgetCalculator.Controllers
             var total = from e in db.Budgets where e.BudgetUserId == id select e;
 
             int size = total.Count();
-            System.Diagnostics.Debug.WriteLine("size: " + size);
+            // System.Diagnostics.Debug.WriteLine("size: " + size);
 
             // DotNet.Highcharts.Highcharts chart = new DotNet.Highcharts.Highcharts("chart")
             object[] income = new object[size];
@@ -164,12 +164,12 @@ namespace MonthlyBudgetCalculator.Controllers
 
             .SetTitle(new Title
             {
-                Text = "Monthly Budget: "
+                Text = "Monthly Budget Analysis Charts "
             })
 
             .SetSubtitle(new Subtitle
             {
-                Text = " Budget Analysis Chart "
+                Text = " Total Income Analysis Chart "
             })
 
             .SetXAxis(new XAxis
@@ -182,7 +182,7 @@ namespace MonthlyBudgetCalculator.Controllers
             {
                 Title = new YAxisTitle
                 {
-                    Text = "TEXT HERE"
+                    Text = "Total Income in €"
                 },
                 PlotLines = new[]
                  { 
@@ -213,7 +213,7 @@ namespace MonthlyBudgetCalculator.Controllers
             //.SetSeries(new Series
              .SetSeries(new []
             {
-                new Series{Name = "Income",Data = new Data(income)}
+                new Series{Name = "Total Income",Data = new Data(income)}
                 //Data = new Data(new object[] { 29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4 })
             })
 

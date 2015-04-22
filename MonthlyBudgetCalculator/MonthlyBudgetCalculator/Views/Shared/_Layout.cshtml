@@ -27,16 +27,26 @@
 
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
 
-                    <li>@Html.ActionLink("Users", "Index", "BudgetUsers")</li>
-
                     <li class="dropdown">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false"
+                           href="#" data-toggle="dropdown">Users<span class="caret"></span></a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Add New User", "Create", "BudgetUsers")</li>
+                            <li>@Html.ActionLink("Application Users", "Index", "BudgetUsers")</li>
+                        </ul>
+                    </li>
+                    
+                    @*<li>@Html.ActionLink("View Budgets", "Index", "Budgets")</li>*@
+
+                    @*<li class="dropdown">
                         <a class="dropdown-toggle" role="button" aria-expanded="false"
                            href="#" data-toggle="dropdown">My Budgets<span class="caret"></span></a>
 
                         <ul class="dropdown-menu" role="menu">
                             <li>@Html.ActionLink("View Budgets", "Index", "Budgets")</li>
                         </ul>
-                    </li>
+                    </li>*@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

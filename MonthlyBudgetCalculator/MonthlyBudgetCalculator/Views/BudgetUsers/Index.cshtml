@@ -7,41 +7,41 @@
     <br />
     <a class="btn btn-primary btn-xs" @Html.ActionLink("Home", "Index", "Home")</a>
 </p>
-<h4>Application Users</h4>
+<h5 class="text-info">Application Users</h5>
+<h6>*Use <strong>Options</strong> to Edit, Delete or View User Profiles and add and check Budgets and Analysis</h6>
 
 <table class="table" style="text-align:left">
     <tr>
-        <th>
+        <th class="text-info">
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
-        <th>
+        <th class="text-info">
             @Html.DisplayNameFor(model => model.LastName)
         </th>
-        <th>
+        <th class="text-info">
             @Html.DisplayNameFor(model => model.DateOfBirth)
         </th>
-        <th>
+        <th class="text-info">
             @Html.DisplayNameFor(model => model.AddressLine1)
         </th>
-        <th>
+        <th class="text-info">
             @Html.DisplayNameFor(model => model.AddressLine2)
         </th>
-        <th>
+        <th class="text-info">
             @Html.DisplayNameFor(model => model.Town)
         </th>
-        <th>
+        <th class="text-info">
             @Html.DisplayNameFor(model => model.Counties)
         </th>
-        <th>
+        <th class="text-info">
             @Html.DisplayNameFor(model => model.Country)
         </th>
-        <th>
+        <th class="text-info">
             @Html.DisplayNameFor(model => model.PostCode)
         </th>
-        <th>
+        <th class="text-info">
             @Html.DisplayNameFor(model => model.ContactNo)
         </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -80,14 +80,14 @@
 
             <td>
                 <div class="btn-group btn-sm">
-                    <a class="btn btn-info" href="#">Select</a>
+                    <a class="btn btn-info" href="#">Options</a>
                     <a class="btn btn-info dropdown-toggle" aria-expanded="false" href="#" data-toggle="dropdown"><span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li>@Html.ActionLink("Add New Budget", "Create", "Budgets", new { id = item.BudgetUserId }, null)</li>
-                        <li>@Html.ActionLink("My Budgets", "Index", "Budgets", new {id = item.BudgetUserId}, null)</li>
-                        <li>@Html.ActionLink("Budget Analysis Chart", "Charts", new { id = item.BudgetUserId })</li>
-                        <li>@Html.ActionLink("Edit User Profile", "Edit", new { id = item.BudgetUserId })</li>
+                        <li>@Html.ActionLink("My Saved Budgets", "Index", "Budgets", new { id = item.BudgetUserId }, null)</li>
+                        <li>@Html.ActionLink("Budget Analysis Charts", "Charts", new { id = item.BudgetUserId })</li>
                         <li>@Html.ActionLink("User Profile", "Details", new { id = item.BudgetUserId })</li>
+                        <li>@Html.ActionLink("Edit User Profile", "Edit", new { id = item.BudgetUserId })</li>
                         <li>@Html.ActionLink("Delete User", "Delete", new { id = item.BudgetUserId })</li>
                     </ul>
                 </div>

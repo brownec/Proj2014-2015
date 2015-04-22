@@ -6,12 +6,13 @@
 <div>
     <br />
     <a class="btn btn-primary btn-xs" @Html.ActionLink("Home", "Index", "Budgets")</a>
-    <a class="btn btn-primary btn-xs" @Html.ActionLink("Users", "Index", "BudgetUsers")</a>
-    <a class="btn btn-primary btn-xs" @Html.ActionLink("My Budgets", "Index")</a>
+    <a class="btn btn-primary btn-xs" @Html.ActionLink("Application Users", "Index", "BudgetUsers")</a>
+    <a class="btn btn-primary btn-xs" @Html.ActionLink("My Saved Budgets", "Index")</a>
 </div>
 
-<h4>New Monthly Budget</h4>
-<h6>*Enter Monthly Income and Expenditure. Click Save Budget when finished.</h6>
+<h5 class="text-info">New Monthly Budget</h5>
+<h6>*Enter Monthly Income and Expenditure. Click <strong>Save Budget</strong> button when finished</h6>
+<h6>*Click heading to show budget information</h6>
 
 @using (Html.BeginForm())
 {
@@ -26,7 +27,7 @@
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#budget">
-                                    <p>Budget Details</p>
+                                    <h6 class="text-info">Budget Details</h6>
                                 </a>
                             </h4>
                         </div>
@@ -65,7 +66,7 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#income">
-                                            <p>Income</p>
+                                            <h6 class="text-info">Income</h6>
                                         </a>
                                     </h4>
                                 </div>
@@ -95,7 +96,7 @@
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
                                                 <a data-toggle="collapse" data-parent="#accordion" href="#carExpenses">
-                                                    <p>Car Expenditure</p>
+                                                    <h6 class="text-info">Car Expenditure</h6>
                                                 </a>
                                             </h4>
                                         </div>
@@ -165,7 +166,7 @@
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title">
                                                         <a data-toggle="collapse" data-parent="#accordion" href="#householdExpenses">
-                                                            <p>Household Expenditure</p>
+                                                            <h6 class="text-info">Household Expenditure</h6>
                                                         </a>
                                                     </h4>
                                                 </div>
@@ -251,7 +252,7 @@
                                                         <div class="panel-heading">
                                                             <h4 class="panel-title">
                                                                 <a data-toggle="collapse" data-parent="#accordion" href="#personalExpenses">
-                                                                    <p>Personal Expenditure</p>
+                                                                    <h6 class="text-info">Personal Expenditure</h6>
                                                                 </a>
                                                             </h4>
                                                         </div>
@@ -329,7 +330,7 @@
                                                                 <div class="panel-heading">
                                                                     <h4 class="panel-title">
                                                                         <a data-toggle="collapse" data-parent="#accordion" href="#travelExpenses">
-                                                                            <p>Travel Expenditure</p>
+                                                                            <h6 class="text-info">Travel Expenditure</h6>
                                                                         </a>
                                                                     </h4>
                                                                 </div>
@@ -391,7 +392,7 @@
                                                                         <div class="panel-heading">
                                                                             <h4 class="panel-title">
                                                                                 <a data-toggle="collapse" data-parent="#accordion" href="#utilityBillExpenses">
-                                                                                    <p>Utility Bill Expenditure</p>
+                                                                                    <h6 class="text-info">Utility Bill Expenditure</h6>
                                                                                 </a>
                                                                             </h4>
                                                                         </div>

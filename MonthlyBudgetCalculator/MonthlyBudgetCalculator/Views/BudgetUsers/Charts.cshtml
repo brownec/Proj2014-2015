@@ -6,8 +6,13 @@
 @{
     ViewBag.Title = "Charts";
 }
-<br />
-<h4>Budget Analysis Charts New</h4>
+<p>
+    <br />
+    <a class="btn btn-primary btn-xs" @Html.ActionLink("Home", "Index", "Home")</a>
+    <a class="btn btn-primary btn-xs" @Html.ActionLink("Application Users", "Index", "BudgetUsers")</a>
+</p>
+<h5 class="text-info">Budget Analysis Charts</h5>
+<h6>*Analysis of all budget details for application user</h6>
 
 @(Model)
 

@@ -2,18 +2,23 @@
     ViewBag.Title = "Home Page";
 }
 
-<h2>Monthly Budget Calculator</h2>
-
+<h3 class="text-info">Monthly Budget Calculator</h3>
+<p>
+    The Monthly Budget Calculator application allows you, the user, record your
+    monthly income and expenditure and display a final Budget Balance figure.<br/>
+    Analysis on the information entered will be displayed in a Summary Table, Charts and Graphs.<br/>
+    Forecasts on income and expenditure will try and help you budget better!
+</p>
 <div class="row">
     <div class="col-md-4">
-        <h3>@Html.ActionLink("Users", "Index", "BudgetUsers")</h3>
-        <p>Click <b>Users</b> to view User Profile</p>
-        <p><a class="btn btn-primary" @Html.ActionLink("Users", "Index", "BudgetUsers")</a></p>
+        <h4>@Html.ActionLink("Application Users", "Index", "BudgetUsers")</h4>
+        <p>Click <b>Application Users</b> to view User Profile and Saved Budgets</p>
+        <p><a class="btn btn-primary" @Html.ActionLink("Application Users", "Index", "BudgetUsers")</a></p>
     </div>
 
-    <div class="col-md-4">
-        <h3>@Html.ActionLink("My Budgets", "Index", "Budgets")</h3>
-        <p>Click <b>Budgets</b> to view saved Budgets</p>
-        <p><a class="btn btn-primary" @Html.ActionLink("Budgets", "Index", "Budgets")</a></p>
-    </div>
+        @*<div class="col-md-4">
+            <h3>@Html.ActionLink("My Budgets", "Index", "Budgets")</h3>
+            <p>Click <b>Budgets</b> to view saved Budgets</p>
+            <p><a class="btn btn-primary" @Html.ActionLink("Budgets", "Index", "Budgets")</a></p>
+         </div>*@
 </div>

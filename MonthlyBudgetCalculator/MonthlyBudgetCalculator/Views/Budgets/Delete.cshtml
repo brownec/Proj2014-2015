@@ -6,11 +6,11 @@
 <div>
     <br />
     <a class="btn btn-primary btn-xs" @Html.ActionLink("Home", "Index", "Home")</a>
-    <a class="btn btn-primary btn-xs" @Html.ActionLink("My Budgets", "Index", "Budgets")</a>
+    <a class="btn btn-primary btn-xs" @Html.ActionLink("My Saved Budgets", "Index", "Budgets")</a>
 </div>
 
-<h4>Delete Budget</h4>
-<h5>Click Delete Budget button to confirm.</h5>
+<h5 class="text-info">Delete Budget</h5>
+<h6>*If you are sure you want to remove this budget, click <strong>Delete Budget</strong> button</h6>
 
 <div>
     <dl class="dl-horizontal">
@@ -22,13 +22,13 @@
             @Html.DisplayFor(model => model.BudgetId)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.BudgetUser.LastName)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.BudgetUser.LastName)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.BudgetName)
@@ -53,7 +53,7 @@
         <dd>
             @Html.DisplayFor(model => model.BudgetEndDate)
         </dd>
-
+    <hr/>
         <dt>
             @Html.DisplayNameFor(model => model.IncomePrimaryAmount)
         </dt>
@@ -70,14 +70,14 @@
             @Html.DisplayFor(model => model.IncomeAdditionalAmount)
         </dd>
 
-        @*<dt>
+        <dt class="text-primary">
             @Html.DisplayNameFor(model => model.TotalIncome)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.TotalIncome)
-        </dd>*@
-
+        </dd>
+    <hr/>
         <dt>
             @Html.DisplayNameFor(model => model.CarTaxAmount)
         </dt>
@@ -134,14 +134,14 @@
             @Html.DisplayFor(model => model.CarExpenseOtherAmount)
         </dd>
 
-        @*<dt>
+        <dt class="text-primary">
             @Html.DisplayNameFor(model => model.TotalCarExpenses)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.TotalCarExpenses)
-        </dd>*@
-
+        </dd>
+    <hr/>
         <dt>
             @Html.DisplayNameFor(model => model.HouseholdRentMortgageAmount)
         </dt>
@@ -214,14 +214,14 @@
             @Html.DisplayFor(model => model.HouseholdExpenseOtherAmount)
         </dd>
 
-        @*<dt>
+        <dt class="text-primary">
             @Html.DisplayNameFor(model => model.TotalHouseholdExpenses)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.TotalHouseholdExpenses)
-        </dd>*@
-
+        </dd>
+    <hr/>
         <dt>
             @Html.DisplayNameFor(model => model.PersonalSocialAmount)
         </dt>
@@ -286,14 +286,14 @@
             @Html.DisplayFor(model => model.PersonalExpenseOtherAmount)
         </dd>
 
-        @*<dt>
+        <dt class="text-primary">
             @Html.DisplayNameFor(model => model.TotalPersonalExpenses)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.TotalPersonalExpenses)
-        </dd>*@
-
+        </dd>
+    <hr/>
         <dt>
             @Html.DisplayNameFor(model => model.TravelBusAmount)
         </dt>
@@ -342,14 +342,14 @@
             @Html.DisplayFor(model => model.TravelExpenseOtherAmount)
         </dd>
 
-        @*<dt>
+        <dt class="text-primary">
             @Html.DisplayNameFor(model => model.TotalTravelExpenses)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.TotalTravelExpenses)
-        </dd>*@
-
+        </dd>
+    <hr/>
         <dt>
             @Html.DisplayNameFor(model => model.UtilityBillElectricityAmount)
         </dt>
@@ -414,13 +414,13 @@
             @Html.DisplayFor(model => model.UtilityBillOtherExpenseAmount)
         </dd>
 
-        @*<dt>
+        <dt class="text-primary">
             @Html.DisplayNameFor(model => model.TotalUtilityBillExpenses)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.TotalUtilityBillExpenses)
-        </dd>*@
+        </dd>
 
     </dl>
 

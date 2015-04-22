@@ -58,11 +58,11 @@ namespace MonthlyBudgetCalculator
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "14061313811-d5u5dk2u0cpsrn1vqmhbvejqa65r2n98.apps.googleusercontent.com",
+                ClientSecret = "QLWfmhnM-5YSUoCLUlqLa48S"
+            });
         }
     }
 }
